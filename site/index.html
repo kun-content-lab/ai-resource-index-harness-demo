@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI 资料索引站 Demo</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: #1f2937;
+        background: #f6f7f9;
+      }
+      main {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 48px 24px;
+      }
+      h1 {
+        font-size: 40px;
+        margin: 0 0 12px;
+      }
+      p {
+        font-size: 18px;
+        line-height: 1.7;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+        margin-top: 28px;
+      }
+      .card {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 18px;
+      }
+      .tag {
+        color: #2563eb;
+        font-size: 13px;
+        font-weight: 700;
+      }
+      .flow {
+        margin-top: 32px;
+        padding: 18px;
+        border-left: 4px solid #2563eb;
+        background: white;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>AI 资料索引站 Demo</h1>
+      <p>
+        这个页面用来演示：AI 不只是在聊天窗口里回答问题，也可以进入一个有任务、
+        状态和证据的 GitHub 工作台。
+      </p>
+
+      <section class="grid">
+        <article class="card">
+          <div class="tag">Agent basics</div>
+          <h2>Agent 工作方式</h2>
+          <p>理解 AI 如何观察、判断、调用工具并继续推进。</p>
+        </article>
+        <article class="card">
+          <div class="tag">Context engineering</div>
+          <h2>上下文工程</h2>
+          <p>把背景、限制和历史决定整理成 AI 能读取的材料。</p>
+        </article>
+        <article class="card">
+          <div class="tag">Workflow control plane</div>
+          <h2>GitHub 工作台</h2>
+          <p>用 issue、PR、comment 和 board 承接任务链。</p>
+        </article>
+        <article class="card">
+          <div class="tag">Guardrails</div>
+          <h2>人工验收</h2>
+          <p>AI 推进流程，人保留方向、边界和风险判断。</p>
+        </article>
+      </section>
+
+      <section class="flow">
+        <strong>演示链路：</strong>
+        Discussion 放背景 -> issue 接任务 -> board 看状态 -> PR 承接改动 -> comment 留证据。
+      </section>
+    </main>
+  </body>
+</html>
