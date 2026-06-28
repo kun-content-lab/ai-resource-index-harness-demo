@@ -4,7 +4,7 @@
 
 做一个小型 AI 资料索引站，用来展示 GitHub 如何承接 AI 工作流。
 
-第一期不是追求完整内容库，而是展示一条完整工作链：
+第一版不是追求完整内容库，而是先跑通一条可维护的工作链：
 
 - 背景先进入 Discussion。
 - 共识转成 parent issue。
@@ -21,7 +21,7 @@
 - 5-8 条示例资料。
 - 一个静态首页。
 - 一个 evidence comment 模板。
-- 一个可截图的 PR。
+- 一个可 review 的 PR。
 
 ### Out
 
@@ -41,7 +41,7 @@
 
 ## 验收标准
 
-- README 能说明这个 demo 的用途。
+- README 能说明项目定位和维护方式。
 - `resources/catalog.md` 有资料索引。
-- `site/index.html` 有可截图页面。
+- `site/index.html` 有第一版静态页面。
 - GitHub issue/PR/comment/Project board 能展示完整工作链。
