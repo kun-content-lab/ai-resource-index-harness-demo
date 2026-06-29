@@ -329,6 +329,78 @@ h3 {
   border-bottom: 1px solid var(--line);
 }
 
+.source-flow-section {
+  border-top: 1px solid var(--line);
+}
+
+.source-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.flow-card {
+  display: flex;
+  min-height: 330px;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 10px 26px rgba(28, 39, 54, 0.06);
+  text-decoration: none;
+}
+
+.flow-card:hover {
+  border-color: #a8b6c7;
+  transform: translateY(-1px);
+}
+
+.flow-index {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 8px;
+  color: #ffffff;
+  background: var(--text);
+  font-weight: 850;
+}
+
+.flow-category {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.flow-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.flow-card dl {
+  display: grid;
+  gap: 10px;
+  margin: auto 0 0;
+}
+
+.flow-card dt {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.flow-card dd {
+  margin: 3px 0 0;
+  line-height: 1.48;
+}
+
+.flow-card strong {
+  color: var(--blue);
+}
+
 .filters {
   display: grid;
   grid-template-columns: minmax(220px, 320px) minmax(160px, 220px);
@@ -389,7 +461,7 @@ select {
 }
 
 .resource-card dl {
-  margin: auto 0 0;
+  margin: 0;
 }
 
 .resource-card dt {
@@ -402,6 +474,26 @@ select {
 .resource-card dd {
   margin: 0;
   line-height: 1.6;
+}
+
+.source-summary {
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--surface-muted);
+}
+
+.resource-link {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 38px;
+  align-items: center;
+  margin-top: auto;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: #ffffff;
+  background: var(--text);
+  font-weight: 800;
+  text-decoration: none;
 }
 
 .empty-state {
@@ -516,6 +608,7 @@ select {
   }
 
   .category-grid,
+  .source-flow,
   .resource-grid,
   .review-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -556,6 +649,7 @@ select {
   }
 
   .category-grid,
+  .source-flow,
   .resource-grid,
   .review-grid,
   .filters,

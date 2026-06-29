@@ -5,6 +5,7 @@
   const elements = {
     categoryGrid: document.querySelector("#category-grid"),
     resourceGrid: document.querySelector("#resource-grid"),
+    sourceFlow: document.querySelector("#source-flow-list"),
     workflowList: document.querySelector("#workflow-list"),
     reviewGrid: document.querySelector("#review-grid"),
     categoryFilter: document.querySelector("#category-filter"),
@@ -92,11 +93,42 @@
             </div>
             <h3><a href="${resource.url}" target="_blank" rel="noreferrer">${resource.title}</a></h3>
             <p>${resource.why}</p>
+            <p class="source-summary">${resource.source_summary}</p>
             <dl>
               <dt>适用场景</dt>
               <dd>${resource.scenario}</dd>
             </dl>
+            <a class="resource-link" href="${resource.final_url || resource.url}" target="_blank" rel="noreferrer">
+              打开原站
+            </a>
           </article>
+        `;
+      })
+      .join("");
+  }
+
+  function renderSourceFlow() {
+    elements.sourceFlow.innerHTML = data.resources
+      .map((resource, index) => {
+        const category = categoryBySlug.get(resource.category);
+        return `
+          <a class="flow-card" href="${resource.final_url || resource.url}" target="_blank" rel="noreferrer">
+            <span class="flow-index">${String(index + 1).padStart(2, "0")}</span>
+            <span class="flow-category">${category.name}</span>
+            <h3>${resource.title}</h3>
+            <p>${resource.source_summary}</p>
+            <dl>
+              <div>
+                <dt>抓取状态</dt>
+                <dd>${resource.source_status} · HTTP ${resource.status_code}</dd>
+              </div>
+              <div>
+                <dt>为什么进入资料流</dt>
+                <dd>${resource.flow_note}</dd>
+              </div>
+            </dl>
+            <strong>点击打开原网站</strong>
+          </a>
         `;
       })
       .join("");
@@ -139,6 +171,7 @@
 
   renderStats();
   renderCategories();
+  renderSourceFlow();
   renderResources();
   renderWorkflow();
   renderReview();

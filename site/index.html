@@ -17,6 +17,7 @@
         </span>
       </a>
       <nav class="topnav" aria-label="页面导航">
+        <a href="#source-flow">资料流</a>
         <a href="#resources">资料</a>
         <a href="#workflow">维护链路</a>
         <a href="#review">验收</a>
@@ -59,12 +60,21 @@
         <div class="category-grid" id="category-grid"></div>
       </section>
 
+      <section class="section source-flow-section" id="source-flow" aria-labelledby="source-flow-title">
+        <div class="section-heading">
+          <p class="eyebrow">Source flow</p>
+          <h2 id="source-flow-title">先抓取资料，再进入索引流</h2>
+          <p>每条资料都带有来源状态、原站摘要、收录理由和跳转入口。页面只沉淀 source card，不搬运全文。</p>
+        </div>
+        <div class="source-flow" id="source-flow-list"></div>
+      </section>
+
       <section class="section resource-section" id="resources" aria-labelledby="resources-title">
         <div class="section-heading with-controls">
           <div>
             <p class="eyebrow">Resource catalog</p>
             <h2 id="resources-title">精选资料目录</h2>
-            <p>搜索、筛选和卡片都从结构化数据渲染，后续可迁移到 JSON/YAML。</p>
+            <p>搜索、筛选和卡片都从抓取后的结构化 source card 渲染，点击即可跳转原网站。</p>
           </div>
           <div class="filters" aria-label="资料筛选">
             <label class="search">
