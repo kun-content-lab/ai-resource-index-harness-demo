@@ -4,91 +4,110 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>AI 资料索引站</title>
-    <style>
-      body {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        color: #1f2937;
-        background: #f6f7f9;
-      }
-      main {
-        max-width: 980px;
-        margin: 0 auto;
-        padding: 48px 24px;
-      }
-      h1 {
-        font-size: 40px;
-        margin: 0 0 12px;
-      }
-      p {
-        font-size: 18px;
-        line-height: 1.7;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 16px;
-        margin-top: 28px;
-      }
-      .card {
-        background: white;
-        border: 1px solid #e5e7eb;
-        border-radius: 8px;
-        padding: 18px;
-      }
-      .tag {
-        color: #2563eb;
-        font-size: 13px;
-        font-weight: 700;
-      }
-      .flow {
-        margin-top: 32px;
-        padding: 18px;
-        border-left: 4px solid #2563eb;
-        background: white;
-      }
-    </style>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <header class="topbar">
+      <a class="brand" href="./index.html" aria-label="AI 资料索引站首页">
+        <span class="brand-mark">AI</span>
+        <span>
+          <strong>AI 资料索引站</strong>
+          <small>Curated workflow resources</small>
+        </span>
+      </a>
+      <nav class="topnav" aria-label="页面导航">
+        <a href="#resources">资料</a>
+        <a href="#workflow">维护链路</a>
+        <a href="#review">验收</a>
+      </nav>
+    </header>
+
     <main>
-      <h1>AI 资料索引站</h1>
-      <p>
-        一个面向 AI 实践者的精选资料入口，用 GitHub 管理收录规则、
-        任务状态、页面改动和验收证据。
-      </p>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">AI workflow resource index</p>
+          <h1 id="page-title">把分散的 AI 工作流资料，收进一条可 review 的项目链路。</h1>
+          <p class="hero-text">
+            第一版先做精选索引：每条资料都有分类、用途、状态和来源类型；页面和目录由同一份结构化数据驱动，避免首页与 catalog 越走越散。
+          </p>
+          <div class="hero-actions" aria-label="核心入口">
+            <a class="button primary" href="#resources">查看资料</a>
+            <a class="button secondary" href="#workflow">看维护链路</a>
+          </div>
+        </div>
 
-      <section class="grid">
-        <article class="card">
-          <div class="tag">Agent basics</div>
-          <h2>Agent 工作方式</h2>
-          <p>理解 AI 如何观察、判断、调用工具、检查结果，再继续推进。</p>
-        </article>
-        <article class="card">
-          <div class="tag">Context engineering</div>
-          <h2>上下文工程</h2>
-          <p>把背景、限制和历史决定整理成 AI 能读取的材料。</p>
-        </article>
-        <article class="card">
-          <div class="tag">Workflow control plane</div>
-          <h2>GitHub 工作台</h2>
-          <p>用 Discussion、issue、board、PR 和 comment 承接任务链。</p>
-        </article>
-        <article class="card">
-          <div class="tag">Guardrails</div>
-          <h2>人工验收</h2>
-          <p>AI 推进流程，人保留方向、边界和风险判断。</p>
-        </article>
+        <aside class="hero-panel" aria-label="项目状态">
+          <div class="metric">
+            <span id="resource-count">0</span>
+            <small>精选资料</small>
+          </div>
+          <div class="metric">
+            <span id="category-count">0</span>
+            <small>主题分类</small>
+          </div>
+          <div class="status-stack" id="status-summary" aria-label="资料状态统计"></div>
+        </aside>
       </section>
 
-      <section class="flow">
-        <strong>维护链路：</strong>
-        Discussion 讨论范围 -> issue 接任务 -> board 看状态 -> PR 承接改动 -> comment 留证据。
+      <section class="section" aria-labelledby="categories-title">
+        <div class="section-heading">
+          <p class="eyebrow">Categories</p>
+          <h2 id="categories-title">四类资料，不做大而全</h2>
+          <p>分类来自第一版范围：先服务 AI 工作流实践，不追短期热点。</p>
+        </div>
+        <div class="category-grid" id="category-grid"></div>
       </section>
 
-      <section class="flow">
-        <strong>当前 PR 证据：</strong>
-        本页面和资料索引由 PR 承接，review 时重点检查资料分类、页面文案和验收证据。
+      <section class="section resource-section" id="resources" aria-labelledby="resources-title">
+        <div class="section-heading with-controls">
+          <div>
+            <p class="eyebrow">Resource catalog</p>
+            <h2 id="resources-title">精选资料目录</h2>
+            <p>搜索、筛选和卡片都从结构化数据渲染，后续可迁移到 JSON/YAML。</p>
+          </div>
+          <div class="filters" aria-label="资料筛选">
+            <label class="search">
+              <span>搜索资料</span>
+              <input id="resource-search" type="search" placeholder="输入 agent、GitHub、review..." />
+            </label>
+            <label class="select">
+              <span>分类</span>
+              <select id="category-filter">
+                <option value="all">全部分类</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div class="resource-grid" id="resource-grid"></div>
+        <p class="empty-state" id="empty-state" hidden>没有匹配的资料。换个关键词或分类再试。</p>
+      </section>
+
+      <section class="section split" id="workflow" aria-labelledby="workflow-title">
+        <div class="section-heading">
+          <p class="eyebrow">GitHub control plane</p>
+          <h2 id="workflow-title">资料不是直接塞进页面，而是先过控制面</h2>
+          <p>Discussion 定方向，issue 冻结范围，PR 承接文件改动，comment 回填证据。</p>
+        </div>
+        <ol class="timeline" id="workflow-list"></ol>
+      </section>
+
+      <section class="section review" id="review" aria-labelledby="review-title">
+        <div class="section-heading">
+          <p class="eyebrow">Review checklist</p>
+          <h2 id="review-title">PR 合并前要验什么</h2>
+          <p>页面效果只是结果，真正可持续的是每次改动都有固定验收口径。</p>
+        </div>
+        <div class="review-grid" id="review-grid"></div>
       </section>
     </main>
+
+    <footer class="footer">
+      <p>第一版边界：静态页面、结构化资料、GitHub review；暂不做搜索后端、登录、数据库或部署。</p>
+      <a href="https://github.com/kun-content-lab/ai-resource-index-harness-demo" rel="noreferrer">GitHub repository</a>
+    </footer>
+
+    <script src="./data/resources.js"></script>
+    <script src="./app.js"></script>
   </body>
 </html>
